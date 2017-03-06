@@ -98,3 +98,6 @@ You run your configuration from `/etc/onetime/config` you will also need to copy
 
     $ cd /path/2/onetimesecret
     $ sudo cp -r etc/locale /etc/onetime/
+
+## Moving master to branch "2016"
+This is the version of onetimesecret as of March 6, 2017. 
