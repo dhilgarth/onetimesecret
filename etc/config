@@ -8,6 +8,8 @@
   :uri: 'redis://redis:6379/0?timeout=10&thread_safe=false&logging=false'
   :config: /etc/onetime/redis.conf
 :colonels:
+  # Accounts created with the following email addresses
+  # are automatically considered admins of the system.
   - CHANGEME@EXAMPLE.com
 :emailer:
   :mode: :sendgrid
@@ -16,8 +18,24 @@
   :from: CHANGEME@example.com
   :fromname: CHANGEME
   :bcc:
+# Use the following email config to enable SMTP
+# support and remove the :emailer config above.
+#:emailer:
+  #  :mode: :smtp
+  #  :from: delano@onetimesecret.com
+  #  :host: localhost
+  #  :port: 587
+  #  :tls: false
+  #  :user:
+  #  :pass:
+  #  :auth:
 :incoming:
-  :enabled: true
+  # Intended for use by IT support teams who need someone to send them
+  # sensitive info. The email address is where the secret
+  # link is sent. Passphrase is used to protect the secret.
+  # The regex used to ensure the ticket number is valid.
+  # See: https://onetimesecret.com/incoming
+  :enabled: false
   :email: example@onetimesecret.com
   :passphrase: CHANGEME
   :regex: \A[a-zA-Z0-9]{6}\z
@@ -26,21 +44,12 @@
   - es
   - de
   - nl
-:unsupported_locales:
   - ru
+  - cs
+:unsupported_locales:
   - fr
   - pt
   - jp
-  - pt
-#:emailer:
-#  :mode: :smtp
-#  :from: delano@onetimesecret.com
-#  :host: localhost
-#  :port: 587
-#  :tls: false
-#  :user:
-#  :pass:
-#  :auth:
 :stathat:
   :enabled: false
   :apikey: CHANGEME
@@ -49,18 +58,18 @@
   :nonpaid_recipient_text: 'You need to create an account!'
   :paid_recipient_text: 'Send the secret link via email'
 :limits:
-  :create_secret: 100
-  :create_account: 3
-  :update_account: 5
-  :email_recipient: 10
-  :send_feedback: 3
+  :create_secret: 250
+  :create_account: 10
+  :update_account: 10
+  :email_recipient: 50
+  :send_feedback: 10
   :authenticate_session: 5
-  :homepage: 100
-  :dashboard: 100
+  :homepage: 500
+  :dashboard: 1000
   :failed_passphrase: 5
-  :show_metadata: 200
-  :show_secret: 100
-  :burn_secret: 100
+  :show_metadata: 1000
+  :show_secret: 1000
+  :burn_secret: 1000
 #:split_tests:
 #  :initial_pricing:
 #    - - basic_v1
