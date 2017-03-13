@@ -74,10 +74,10 @@ GEM
     sysinfo (0.7.3)
       drydock
       storable
-    thin (1.5.0)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
+    thin (1.6.4)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (~> 1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -105,7 +105,7 @@ DEPENDENCIES
   rudy (= 0.9.8.020)
   storable (= 0.8.9)
   sysinfo (= 0.7.3)
-  thin (= 1.5.0)
+  thin (~> 1.6.4)
   yajl-ruby (= 1.1.0)
 
 BUNDLED WITH
