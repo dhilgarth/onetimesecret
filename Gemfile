@@ -11,7 +11,7 @@ gem 'thin', '~> 1.7.0'
 gem 'mustache', '1.0.3'
 
 gem 'gibbler', '0.8.9'
-gem 'redis', '3.3.1'
+gem 'redis', '2.2.2'
 gem 'familia', '0.7.1'
 gem 'storable', '0.8.9'
 
@@ -20,7 +20,7 @@ gem 'bcrypt', '3.1.11'
 
 gem 'otto', '0.4.1'
 
-gem 'redis-dump', '0.3.5'
+gem 'redis-dump', '0.3.2'
 
 gem 'sysinfo', '0.7.3'
 gem 'annoy', '0.5.6'
