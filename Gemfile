@@ -6,7 +6,7 @@ source "https://rubygems.org/"
 gem 'addressable', '2.5.0'
 gem 'rack', '2.0.1'
 gem 'yajl-ruby', '1.3.0'
-gem 'thin', '~> 1.7.0'
+gem 'thin', '~> 1.5.0'
 
 gem 'mustache', '1.0.3'
 
