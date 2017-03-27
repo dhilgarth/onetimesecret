@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.2.3
 
 RUN groupadd -r ots && useradd -r -m -g ots ots
 RUN apt-get update
