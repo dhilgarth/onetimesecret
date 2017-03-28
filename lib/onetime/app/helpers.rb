@@ -153,7 +153,7 @@ class Onetime::App
     end
 
     def local?
-      (LOCAL_HOSTS.member?(req.env['SERVER_NAME'])
+      (LOCAL_HOSTS.member?(req.env['SERVER_NAME']))
     end
 
     def err *args

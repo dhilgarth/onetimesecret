@@ -67,7 +67,7 @@ module Onetime
         end
 
         def local?
-          (LOCAL_HOSTS.member?(req.env['SERVER_NAME'])
+          (LOCAL_HOSTS.member?(req.env['SERVER_NAME']))
         end
         protected
 
