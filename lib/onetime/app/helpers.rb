@@ -143,17 +143,20 @@ class Onetime::App
     end
 
     def secure_request?
-      !local? || secure?
+      #!local? || secure?
+      true
     end
 
     def secure?
       # X-Scheme is set by nginx
       # X-FORWARDED-PROTO is set by elastic load balancer
-      (req.env['HTTP_X_FORWARDED_PROTO'] == 'https' || req.env['HTTP_X_SCHEME'] == "https")
+      #(req.env['HTTP_X_FORWARDED_PROTO'] == 'https' || req.env['HTTP_X_SCHEME'] == "https")
+      true
     end
 
     def local?
-      (LOCAL_HOSTS.member?(req.env['SERVER_NAME']))
+      # (LOCAL_HOSTS.member?(req.env['SERVER_NAME']))
+      false
     end
 
     def err *args
