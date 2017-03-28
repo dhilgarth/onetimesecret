@@ -67,7 +67,7 @@ module Onetime
         end
 
         def local?
-          (LOCAL_HOSTS.member?(req.env['SERVER_NAME']) && (req.client_ipaddress == '127.0.0.1'))
+          (LOCAL_HOSTS.member?(req.env['SERVER_NAME'])
         end
         protected
 

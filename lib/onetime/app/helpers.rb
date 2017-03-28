@@ -10,7 +10,7 @@ class Onetime::App
   end
   unless defined?(Onetime::App::BADAGENTS)
     BADAGENTS = [:facebook, :google, :yahoo, :bing, :stella, :baidu, :bot, :curl, :wget]
-    LOCAL_HOSTS = ['localhost', '127.0.0.1', 'www.ot.com', 'www.ots.com'].freeze
+    LOCAL_HOSTS = ['www.ot.com', 'www.ots.com'].freeze
   end
 
   module Helpers
@@ -153,7 +153,7 @@ class Onetime::App
     end
 
     def local?
-      (LOCAL_HOSTS.member?(req.env['SERVER_NAME']) && (req.client_ipaddress == '127.0.0.1'))
+      (LOCAL_HOSTS.member?(req.env['SERVER_NAME'])
     end
 
     def err *args
