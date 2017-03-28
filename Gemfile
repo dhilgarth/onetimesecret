@@ -6,12 +6,12 @@ source "https://rubygems.org/"
 gem 'addressable', '2.5.0'
 gem 'rack', '~> 1.0'
 gem 'yajl-ruby', '1.3.0'
-gem 'thin', '~> 1.6.4'
+gem 'thin', '~> 1.7.0'
 
 gem 'mustache', '1.0.3'
 
 gem 'gibbler', '0.8.9'
-gem 'redis', '3.3.3'
+gem 'redis', '3.2.2'
 gem 'familia', '0.7.1'
 gem 'storable', '0.8.9'
 
