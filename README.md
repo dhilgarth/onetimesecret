@@ -1,6 +1,24 @@
-# ONE-TIME SECRET - v0.10.0 (2016-11-16)
+# DOCKERIZED ONE-TIME SECRET - v0.10.0 (2016-11-16)
 
 *Keep sensitive info out of your email & chat logs.*
+
+## What is Dockerized One-Time Secret? ##
+Dockerized One-Time Secret (DOTS) is based off of One-Time Secret (OTS) version 0.10.0. We saw the need to upgrade Ruby from 1.9.3, and several outdated gems with vulnerabilies (as identified by Gemnasium), and in the process of making these upgrades and deploying the application internally, elected to use Docker and Docker compose.  The following changes were made over v0.10.0:
+
+    * upgraded Ruby from 1.9.3 to 2.4.1
+    * upgraded the following insecure gems
+        * rack
+        * mail
+        * httparty
+    * upgraded Redis from 2.6 to 3.2
+
+There remain other outdated gems, but we minimized non-critical changes, with the goals of avoiding the alteration of application code (and the accompanying debugging work). 
+
+### Docker Container
+This container is also avaiable from DockerHub under the name ['civisanalytics/onetimesecret'](https://hub.docker.com/r/civisanalytics/onetimesecret/), which builds automatically from the 'dockerized' branch of this repository.
+
+In order to build the container locally, `cd` into the directory and run `docker build -t onetimesecret .` Also included in this repository is the docker-compose.yaml file needed to stand up the environment. 
+
 
 ## What is a One-Time Secret? ##
 
