@@ -39,7 +39,7 @@ module Onetime
         self[:ot_version_id] = self[:ot_version].gibbler.short
         self[:authenticated] = sess.authenticated? if sess
         self[:display_promo] = false
-        self[:display_feedback] = true
+        self[:display_feedback] = false
         self[:colonel] = cust.role?(:colonel) if cust
         self[:feedback_text] = OT.conf[:text][:feedback]
         self[:nonpaid_recipient_text] = OT.conf[:text][:nonpaid_recipient_text]
@@ -52,10 +52,10 @@ module Onetime
         self[:jsvars] << jsvar(:shrimp, sess.add_shrimp) if sess
         self[:jsvars] << jsvar(:custid, cust.custid)
         self[:jsvars] << jsvar(:email, cust.email)
-        self[:display_links] = true
-        self[:display_options] = true# sess.authenticated?
+        self[:display_links] = false
+        self[:display_options] = false# sess.authenticated?
         self[:display_recipients] = sess.authenticated?
-        self[:display_masthead] = true
+        self[:display_masthead] = false
         if self[:is_subdomain]
           tmp = req.env['ots.subdomain']
           self[:subdomain] = tmp.to_hash
@@ -63,7 +63,7 @@ module Onetime
           self[:subdomain]['company'] = "One-Time Secret"
           self[:subtitle] = self[:subdomain]['company'] || self[:subdomain]['company_domain']
           self[:display_feedback] = sess.authenticated?
-          self[:display_icons] = sess.authenticated?
+          self[:display_icons] = false
           self[:display_faq] = false
           self[:actionable_visitor] = sess.authenticated?
           self[:override_styles] = true
@@ -76,7 +76,7 @@ module Onetime
         else
           self[:subtitle] = "One Time"
           self[:display_faq] = true
-          self[:display_icons] = true
+          self[:display_icons] = false
           self[:display_otslogo] = true
           self[:actionable_visitor] = true
           # NOTE: uncomment the following line to show the broadcast
