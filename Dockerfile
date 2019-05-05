@@ -1,5 +1,6 @@
 # The base image is created on Debian
 FROM ruby:2.4.1
+MAINTAINER Daniel Hilgarth <d.hilgarth@sovarto.com>
 
 RUN echo "deb [check-valid-until=no] http://cdn-fastly.deb.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie.list
 RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
@@ -12,9 +13,7 @@ RUN apt-get update
 RUN apt-get install -y build-essential
 RUN apt-get install -y ntp libyaml-dev libevent-dev zlib1g zlib1g-dev openssl libssl-dev libxml2 libreadline-gplv2-dev
 
-#
 # Setting up OTS
-#
 RUN groupadd -r ots && useradd -r -m -g ots ots
 RUN mkdir -p /etc/onetime /var/log/onetime /var/run/onetime /var/lib/onetime 
 RUN chown ots /etc/onetime /var/log/onetime /var/run/onetime /var/lib/onetime
@@ -32,5 +31,4 @@ ENTRYPOINT echo $OTS_DOMAIN | xargs -I domurl sed -ir 's/:domain:/:domain: domur
 && echo $REDIS_HOST | xargs -I redishost sed -ir 's/redis:\/\/redis/redis:\/\/redishost/g' /etc/onetime/config \
 && dd if=/dev/urandom bs=40 count=1 | openssl sha1 | grep stdin | awk '{print $2}' | xargs -I key sed -ir 's/:secret: $/:secret: key/g' /etc/onetime/config \
 && cd /home/ots/onetime/ \
-&& cat /etc/onetime/config \
 && bundle exec thin -e dev -R config.ru -p 7143 start

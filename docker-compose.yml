@@ -1,14 +1,14 @@
 version: '3'
 services: 
   onetimesecret: 
-    image: "civisanalytics/onetimesecret:dockerized"
-    ports: 
-      - "80:7143"
-    links:
-      - "redis:redis"
+    image: dhilgarth/onetimesecret
+#    ports:
+#      - "80:7143"
+# Better use a reverse proxy like Traefik
     environment:
-      - OTS_DOMAIN=civisanalytics.com
-      - OTS_HOST=onetimesecret.civisanalytics.com
+      - OTS_DOMAIN=sovarto.com
+      - OTS_HOST=secrets.sovarto.com
       - OTS_SSL=true
-  redis:
+      - REDIS_HOST=redis-ots
+  redis-ots:
     image: "redis:3.2"
