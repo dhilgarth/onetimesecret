@@ -1,1 +1,1 @@
-docker build -t "onetimesecret:latest"
+docker build -t "sovarto/onetimesecret:latest" .
